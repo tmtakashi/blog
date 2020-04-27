@@ -15,14 +15,15 @@ interface IProps {
       }
     }
   }
+  location: Location
 }
 
-const BlogIndex = ({ data }: IProps) => {
+const BlogIndex = ({ data, location }: IProps) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <Layout location={window.location} title={siteTitle}>
+    <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
       {posts.map(({ node }) => {
