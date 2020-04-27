@@ -6,12 +6,23 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-const BlogIndex = ({ data, location }) => {
+interface IProps {
+  data: {
+    allMarkdownRemark: any
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+  }
+}
+
+const BlogIndex = ({ data }: IProps) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={window.location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
       {posts.map(({ node }) => {
