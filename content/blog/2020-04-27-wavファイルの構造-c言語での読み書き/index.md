@@ -42,3 +42,7 @@ dataパラメータには、量子化ビット数が8bitの場合最小値が0�
 モノラルの場合は時間が進むにつれて音データが順番に記録されていきます。 ステレオの場合は左チャンネルのデータと右チャンネルのデータが交互に記録されていきます。
 
 ![](/img/wave_block.svg)
+
+### バイナリをのぞいてみる
+WAVファイルのバイナリをVSCodeの拡張機能、[hexdump for VSCode](https://marketplace.visualstudio.com/items?itemName=slevesque.vscode-hexdump)を使って見てみましょう。
+<audio src="/img/sine.wav">
