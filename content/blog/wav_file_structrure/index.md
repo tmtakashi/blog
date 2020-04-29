@@ -76,7 +76,7 @@ WAVファイルのバイトオーダーは各chunkIDがビッグエンディア�
 
 ### C言語でのWAVファイルの読み書き
 
-次に、C言語でWAVファイルの読み書きを実装してみます。ここでは必要な情報だけを保持できるように、
+次に、C言語でWAVファイルの読み書きを実装してみます。ここでは必要な情報だけを保持できるよう、
 以下のような構造体`MONO_PCM`にWAVファイルのプロパティを移すことを考えます。
 `MONO_PCM`構造体では、計算精度の向上のため、音データを-1.0 ~ 1.0の`double`型として扱います。
 
@@ -90,7 +90,8 @@ typedef struct
 } MONO_PCM
 ```
 
-以下の`wave.h`にWAVファイルから`MONO_PCM`構造体にデータを読み込む`mono_read_wave`関数と、`MONO_PCM`構造体にあるデータからWAVファイルを生成する`mono_write_wave`関数を示します。
+以下の`wave.h`に、WAVファイルから`MONO_PCM`構造体にデータを読み込む`mono_read_wave`関数と、`MONO_PCM`構造体にあるデータからWAVファイルを生成する`mono_write_wave`関数を示します。
+
 なお、これらの関数は量子化ビット数16bitのモノラル音源を想定しています。
 （個人的にわかりにくかったところにはコメントを入れています）
 
@@ -253,7 +254,7 @@ void mono_wave_write(MONO_PCM *pcm, char *file_name)
 
 #### 読み込み
 
-この`wave.h`を使って実際にWAVファイルの各種プロパティを`MONO_PCM`構造体経由で読み込んでみます。
+この`wave.h`を用いて、実際にWAVファイルの各種プロパティを`MONO_PCM`構造体経由で読み込んでみます。
 
 ```c
 // read_wave.c 
@@ -287,7 +288,8 @@ Sampling frequency: 8000
 Quantization bit rate: 16
 Signal length: 8000
 ```
-のような結果が出力され、WAVファイルの基本的なプロパティが読み込めていることが分かります。
+以上のような結果が出力され、WAVファイルの基本的なプロパティが読み込めていることが分かります。
+
 肝心の音データですが、パイプ接続用のAPIである`popen()`関数を使って、gnuplotでグラフを書いてみます。
 
 ```c
@@ -334,7 +336,7 @@ int main(int argc, char *argv[])
 }
 ```
 
-以上のコードを以下のようにコンパイルして実行すると、gnuplotのウィンドウが起動してグラフが表示されます。
+以上のコードを、以下のようにコンパイルして実行すると、gnuplotのウィンドウが起動してグラフが表示されます。
 ```
 gcc -o plot_wav plot_wav.c
 ./plot_wav sine.wav
