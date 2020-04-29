@@ -49,7 +49,9 @@ dataパラメータには、量子化ビット数が8bitの場合最小値が0�
 
 ### バイナリをのぞいてみる
 WAVファイルのバイナリをVSCodeの拡張機能、[hexdump for VSCode](https://marketplace.visualstudio.com/items?itemName=slevesque.vscode-hexdump)を使って見てみましょう。
+
 拡張機能をインストールしたあと、`*.wav`ファイルをファイルエクスプローラーで右クリックし、"Show hexdump for file"をクリックすると以下のようにファイルの内容が16進数表記のバイト列として表示されます。
+
 右側に表示されている文字列は各バイトをASCIIで解釈したものになっています。
 ```
   Offset: 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 	
