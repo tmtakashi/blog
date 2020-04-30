@@ -4,7 +4,9 @@ date: 2020-04-29T07:15:50.256Z
 description: "JUCE入門: レベルメータの実装"
 ---
 
-今回は、オーディオアプリケーション開発用C++ライブラリである[JUCE](https://juce.com/)上で[この動画](https://www.youtube.com/watch?v=Bw_OkHNpj1M&t=2321s)を参考に簡単なレベルメータを実装していきます。
+今回は、オーディオアプリケーション開発用C++ライブラリである[JUCE](https://juce.com/)上で[この動画](https://www.youtube.com/watch?v=Bw_OkHNpj1M&t=2321s)を参考に、以下の画像にあるような簡単なレベルメータを実装していきます。
+
+![final slider](/img/juce_gain_control/slider_final.png)
 
 ## プロジェクトの作成
 
@@ -28,7 +30,8 @@ Xcodeのメニューバーから"Product > Scheme > Edit Scheme"を選択しま�
 ![xcode startup](/img/juce_gain_control/edit_scheme.png)
 
 "Excecutable"から"Other..."を選択し、デバッグに使いたいDAWの実行ファイルを選択します。今回はLogic Pro Xを選択しました。
-Debug Executable"のチェックを外します。
+
+そして、"Debug Executable"のチェックを外します。
 
 ![select logic](/img/juce_gain_control/select_logic.png)
 
@@ -65,8 +68,11 @@ private:
 ```
 
 次にスライダーの見た目を作る処理を行う、[`Slider`](https://docs.juce.com/master/classSlider.html)クラスのメンバー関数を`GainTutorialAudioProcessorEditor`のコンストラクタ内で呼び出します。
+
 具体的には、[`setSliderStyle()`](https://docs.juce.com/master/classSlider.html#a6b6917dd3753c7552778977733f0b9ef)というメンバー関数でスライダーの種類を決めます。
+
 この関数は列挙体[`Slider::SliderStyle`](https://docs.juce.com/master/classSlider.html#af1caee82552143dd9ff0fc9f0cdc0888)の列挙値を引数に取ります。
+
 今回は縦型のスライダーが欲しいので、列挙値`LinearVertical`を選択します。
 
 ```cpp
@@ -160,7 +166,7 @@ GainTutorialAudioProcessorEditor::GainTutorialAudioProcessorEditor (GainTutorial
 
 また、デフォルトで`paint()`メンバー関数に記述されている`Hello World!`を表示するコードも削除して、背景が真っ黒になるようにします。
 
-![setBounds](/img/juce_gain_controller/setBounds.svg)
+![setBounds](/img/juce_gain_control/setBounds.svg)
 
 ```cpp
 // PluginEditor.cpp
@@ -178,7 +184,7 @@ void GainTutorialAudioProcessorEditor::resized()
 
 この時点でビルドして、DAWでプラグインを起動するとスライダーが真ん中に配置されているような見た目になるはずです。
 
-![slider](/img/juce_gain_controller/slider.png)
+![slider](/img/juce_gain_control/slider.png)
 
 ## 音量を変えてみる
 
@@ -388,7 +394,7 @@ GainTutorialAudioProcessorEditor::GainTutorialAudioProcessorEditor (GainTutorial
 
 この変化の感じ方を一定にするために、例えばデフォルト設定のLogic Pro Xでは以下のようなdBFSを単位としたレベルメータが付属しています。
 
-![level meter](/img/juce_gain_controller/level_meter.png)
+![level meter](/img/juce_gain_control/level_meter.png)
 
 JUCEでは`Decibels`クラスを用いれば、簡単にdB値からゲインに変換することができます。
 
