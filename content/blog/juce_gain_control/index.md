@@ -43,7 +43,7 @@ Xcodeのメニューバーから"Product > Scheme > Edit Scheme"を選択しま�
 ## スライダーの配置
 
 まずは操作系であるスライダーを実装していきます。
-`PluginProcessor.h`にある`GainTutorialAudioProcessorEditor`に`Slider`クラスのprivateメンバ変数`mGainSlider`を追加します。
+`PluginEditor.h`にある`GainTutorialAudioProcessorEditor`に`Slider`クラスのprivateメンバ変数`mGainSlider`を追加します。
 
 ```cpp
 // PluginEditor.h
