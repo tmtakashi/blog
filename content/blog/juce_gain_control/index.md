@@ -236,9 +236,7 @@ for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
 一方、入力チャンネル数と出力チャンネル数が等しい場合には`i < totalNumOutputChannels`が`true`になることがないので、上のforループが実行されることはありません。
 
 最後のforループの中で、実際に信号処理を記述していきます。
-
 入力チャンネルごとに、対応する出力チャンネルの書き込み先のバッファの先頭アドレスを取得し、`channelData`ポインタに格納します。
-
 `channelData`に格納されたアドレスを起点として、バッファ内のサンプル値を書き換えていきます。
 
 ```cpp
@@ -432,3 +430,8 @@ void GainTutorialAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiB
 再度ビルドしてするとスライダーのスケールが変わり、スライダーのかかり方も変化していることが分かります。
 
 ![final slider](/img/juce_gain_control/slider_final.png)
+
+## 参考
+
+1. "Juce Tutorial 64 - Building Your First Plug-In (2020 Update)" (https://www.youtube.com/watch?v=Bw_OkHNpj1M&t=1216s)
+2. JUCE Documentation (https://juce.com/learn/documentation)
